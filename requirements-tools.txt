@@ -1,0 +1,6 @@
+# Extra packages for the tool samples in tool_tests/ (pytest + DeepEval + Ragas). promptfoo runs via npx.
+pytest
+deepeval
+ragas
+langchain-community<0.4.2   # ragas 0.4.3 imports a module removed in 0.4.2
+pyarrow<25                  # 25.x DLLs were blocked by Windows Application Control on this machine

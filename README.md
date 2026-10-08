@@ -63,3 +63,18 @@ python quality_tests.py privacy fairness # just some
 
 ## Resource tuning (top of rag.py)
 `CHAT_MODEL = "llama3.2:1b"` for less RAM, `NUM_CTX = 2048`, `TOP_K = 3`.
+
+## Tool samples (`tool_tests/`)
+The same kind of checks written with real AI-testing tools. All judges run locally on Ollama.
+
+| File | Tool | Tests |
+|---|---|---|
+| `test_deepeval.py` | DeepEval + pytest | answer relevancy, faithfulness |
+| `test_ragas.py` | Ragas + pytest | faithfulness, context recall (retrieval) |
+| `promptfoo/promptfooconfig.yaml` | promptfoo (YAML) | prompt injection, safety (LLM rubric) |
+
+```
+pip install -r requirements-tools.txt
+pytest tool_tests -s                       # DeepEval + Ragas
+cd tool_tests/promptfoo && npx promptfoo@latest eval
+```
